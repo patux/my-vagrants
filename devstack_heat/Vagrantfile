@@ -6,11 +6,11 @@ Vagrant::Config.run do |config|
   config.vm.network :hostonly, "10.10.10.102"
   config.vm.boot_mode='gui'
 
-  config.vm.provision :shell, :path=> "bootstrap.sh" 
+  #config.vm.provision :shell, :path=> "bootstrap.sh" 
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
     puppet.module_path = "../modules"
     puppet.manifest_file = "vagrant.pp"
-    puppet.options = ["--verbose", "--node_name_value", config.vm.host_name, "--http_proxy_host", "proxy-us.intel.com", "--http_proxy_port", "911"]
+    puppet.options = ["--verbose", "--node_name_value", config.vm.host_name ]
   end
 end
