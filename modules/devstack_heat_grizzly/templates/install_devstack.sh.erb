@@ -23,12 +23,12 @@ echo IMAGE_URLS+=",http://10.253.8.111/oc-images/cirros-0.3.0-x86_64-uec.tar.gz,
 echo "# Network configuration. HOST_IP should be the same as the IP you used" >> localrc
 echo "# for the private network in your Vagrantfile. The combination of" >> localrc
 echo "# FLAT_INTERFACE and PUBLIC_INTERFACE indicates that OpenStack should" >> localrc
-echo "# bridge network traffic over eth1."
+echo "# bridge network traffic over eth1." >> localrc
 echo HOST_IP=10.10.10.103 >> localrc
 echo HOST_IP_IFACE=eth1 >> localrc
 echo FLAT_INTERFACE=br100 >> localrc
 echo PUBLIC_INTERFACE=eth1 >> localrc
-echo FLOATING_RANGE=10.10.10.192/27
+echo FLOATING_RANGE=10.10.10.192/27 >> localrc
 #echo ENABLED_SERVICES+=,heat,h-api,h-api-cfn,h-api-cw,h-eng,ceilometer-acompute,ceilometer-acentral,ceilometer-collector,ceilometer-api >> localrc
 #echo IMAGE_URLS+=",http://launchpad.net/cirros/trunk/0.3.0/+download/cirros-0.3.0-x86_64-uec.tar.gz,http://fedorapeople.org/groups/heat/prebuilt-jeos-images/F17-x86_64-cfntools-pkg.qcow2,http://fedorapeople.org/groups/heat/prebuilt-jeos-images/F17-x86_64-cfntools-pkg.qcow2,http://fedorapeople.org/groups/heat/prebuilt-jeos-images/F17-x86_64-cfntools.qcow2,http://fedorapeople.org/groups/heat/prebuilt-jeos-images/U10-x86_64-cfntools.qcow2" >> localrc
 ./stack.sh
