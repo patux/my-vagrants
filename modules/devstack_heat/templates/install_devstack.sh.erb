@@ -31,8 +31,8 @@ echo HOST_IP_IFACE=eth1 >> localrc
 echo FLAT_INTERFACE=br100 >> localrc
 echo PUBLIC_INTERFACE=eth1 >> localrc
 echo FLOATING_RANGE=10.10.10.224/27 >> localrc
+echo EXTRA_OPTS=\(scheduler_default_filters=AllHostsFilter\) >> localrc
 #echo ENABLED_SERVICES+=,heat,h-api,h-api-cfn,h-api-cw,h-eng,ceilometer-acompute,ceilometer-acentral,ceilometer-collector,ceilometer-api >> localrc
 #echo IMAGE_URLS+=",http://launchpad.net/cirros/trunk/0.3.0/+download/cirros-0.3.0-x86_64-uec.tar.gz,http://fedorapeople.org/groups/heat/prebuilt-jeos-images/F17-x86_64-cfntools-pkg.qcow2,http://fedorapeople.org/groups/heat/prebuilt-jeos-images/F17-x86_64-cfntools-pkg.qcow2,http://fedorapeople.org/groups/heat/prebuilt-jeos-images/F17-x86_64-cfntools.qcow2,http://fedorapeople.org/groups/heat/prebuilt-jeos-images/U10-x86_64-cfntools.qcow2" >> localrc
 ./stack.sh
 echo "OFFLINE=True" >> localrc
-echo EXTRA_OPTS=\(scheduler_default_filters=AllHostsFilter\) >> localrc
