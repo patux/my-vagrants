@@ -11,6 +11,6 @@ Vagrant::Config.run do |config|
     puppet.manifests_path = "manifests"
     puppet.module_path = "../modules"
     puppet.manifest_file = "vagrant.pp"
-    puppet.options = ["--verbose", "--node_name_value", config.vm.host_name, "--http_proxy_host", "10.253.8.111", "--http_proxy_port", "3128"]
+    puppet.options = ["--verbose", "--node_name_value", config.vm.host_name, "--http_proxy_host", "10.253.8.76", "--http_proxy_port", "3128"]
   end
 end

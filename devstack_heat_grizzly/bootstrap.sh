@@ -3,7 +3,7 @@
 # BOOTSTRAP Variables
 #--------------------------------------------------------------------
 # These variables can be used by the recipes
-export BOOTSTRAP_HOST=10.253.8.111
+export BOOTSTRAP_HOST=10.253.8.76
 export BOOTSTRAP_URL=http://$BOOTSTRAP_HOST/oc-bootstrap
 export BOOTSTRAP_RECIPES_URL=http://$BOOTSTRAP_HOST/oc-bootstrap/recipes/
 # Local variables for the bootstrap 
