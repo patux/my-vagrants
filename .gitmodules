@@ -1,0 +1,6 @@
+[submodule "modules/proxy"]
+	path = modules/proxy
+	url = https://github.intel.com/gorozco1/pm-intel-proxy.git
+[submodule "modules/oc-bootstrap"]
+	path = modules/oc-bootstrap
+	url = https://github.intel.com/gorozco1/pm-oc-bootstrap.git

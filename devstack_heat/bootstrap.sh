@@ -3,9 +3,9 @@
 # BOOTSTRAP Variables
 #--------------------------------------------------------------------
 # These variables can be used by the recipes
-export BOOTSTRAP_HOST=gmw-gorozco1.zpn.intel.com
-export BOOTSTRAP_URL=http://$BOOTSTRAP_HOST/oc-bootstrap
-export BOOTSTRAP_RECIPES_URL=http://$BOOTSTRAP_HOST/oc-bootstrap/recipes/
+export BOOTSTRAP_HOST=github.intel.com
+export BOOTSTRAP_URL=https://$BOOTSTRAP_HOST/iopencloud/oc-bootstrap/raw/master
+export BOOTSTRAP_RECIPES_URL=$BOOTSTRAP_URL/recipes
 # Local variables for the bootstrap 
 # Very important to set the recipes to run in the order you want to run
 # These variables can only be used by the bootstrap
@@ -21,18 +21,18 @@ export REPO_URL=
 # change-admin-pwd recipe variable (embedded here)
 # export ADMIN_PWD=rootroot
 # os-repo recipe variables
-export OS_REPO=http://repo-eg01.cps.intel.com/archive.ubuntu.com/
+export OS_REPO=repo-eg01.cps.intel.com
 # puppet-repo recipe variables
 # export PUPPET_REPO=http://repo-eg01.cps.intel.com/apt.puppetlabs.com/
 # export PUPPET_KEY=http://$BOOTSTRAP_HOST/oc-bootstrap/recipes/puppet-repo/common/puppetlabs-pubkey.gpg
 # puppet-agent recipe variables
 # export PUPPET_PACKAGE=3.1.1-1puppetlabs1
 # proxy recipe & system bootstrap variables
-# export http_proxy=http://proxy-us.intel.com:911
-# export https_proxy=http://proxy-us.intel.com:911
-# export socks_proxy=socks://proxy-skype.intel.com:1080/
+# export http_proxy=http://10.253.8.90:3128
+# export https_proxy=http://10.253.8.90:3128
+# export socks_proxy=
 # export ftp_proxy=
-export no_proxy=localhost,127.0.0.1,`hostname -f`,$BOOTSTRAP_HOST,.intel.com,.local,$no_proxy
+# export no_proxy=localhost,127.0.0.1,`hostname -f`,$BOOTSTRAP_HOST,.intel.com,.local,$no_proxy
 #--------------------------------------------------------------------
 # NO TUNABLES BELOW THIS POINT
 #--------------------------------------------------------------------
