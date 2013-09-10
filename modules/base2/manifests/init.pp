@@ -1,10 +1,10 @@
 class base2 {
   exec {"apt-intel-extra-conf-line":
-      command => "echo Acquire::socks::proxy { repo-eg01.cps.intel.com DIRECT';'}';' >> /etc/apt/apt.conf.d/40proxy",
+      command => "echo Acquire::http::proxy { repo-eg01.cps.intel.com DIRECT';'}';' >> /etc/apt/apt.conf.d/40proxy",
       user    => root,
   }
   exec {"update apt":
-    command   => "/usr/bin/apt-get -y update;/usr/bin/apt-get -y dist-upgrade",
+    command   => "/bin/bash -c 'source /etc/environment;/usr/bin/apt-get -y update;/usr/bin/apt-get -y dist-upgrade'",
     #command  => "apt-get -y update",
     timeout   => 0,
     logoutput => true,
