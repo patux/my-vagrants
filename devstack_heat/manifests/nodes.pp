@@ -28,6 +28,4 @@ node default inherits basenode {
   group { "vagrant": ensure => "present"; } ->
   user  { "vagrant": ensure => "present"; } 
 
-  class { "oc-bootstrap": stage => post; }
-
 }

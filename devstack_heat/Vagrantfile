@@ -1,3 +1,6 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
 proxy_host = "proxy-us.intel.com"
 proxy_port = "911"
 host_ip    = "10.10.10.102"
@@ -9,9 +12,10 @@ Vagrant::Config.run do |config|
   config.vm.customize ["modifyvm", :id, "--memory", 6048]
   config.vm.forward_port 80, 8080,  :auto => true
   config.vm.forward_port 8081, 8081, :auto => true
-  #config.vm.boot_mode='gui'
+  config.vm.network :hostonly, host_ip
+  config.vm.boot_mode='gui'
 
-  #config.vm.provision :shell, :path=> "bootstrap.sh" 
+  config.vm.provision :shell, :path=> "bootstrap.sh" 
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
     puppet.module_path = "../modules"
