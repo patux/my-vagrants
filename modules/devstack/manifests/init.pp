@@ -1,10 +1,4 @@
-class devstack {
-  file {"/etc/environment":
-    owner => root,
-    group => root,
-    mode => '0644',
-    content => template('devstack/environment.erb'),
-  } ->
+class devstack ($devstack_branch = "stable/grizzly") {
   file {"/home/vagrant/install_devstack.sh":
     owner => vagrant,
     group => vagrant,
@@ -12,11 +6,13 @@ class devstack {
     replace => false,
     content => template('devstack/install_devstack.sh.erb'),
   } ~>
-  exec { "su - vagrant -c '/home/vagrant/install_devstack.sh | tee -a /tmp/devstack_install.log&'": 
+  exec { "su - vagrant -c '/home/vagrant/install_devstack.sh | tee -a /tmp/devstack_install.log&'":
     provider => shell,
     cwd => "/home/vagrant/",
     #user => vagrant,
     #group => vagrant,
     refreshonly => true,   
+    timeout   => 0,
+    logoutput => true,
   }
 }
