@@ -1,4 +1,6 @@
 class base2 {
+  $base_packages = [ "openjdk-6-jre", "curl", "git-core", "vim", "wget", "libssl0.9.8", "build-essential", "libsqlite3-dev", "libffi-dev", "git-review", "python-dev" ]
+
   exec {"apt-intel-extra-conf-line":
       command => "echo Acquire::http::proxy { repo-eg01.cps.intel.com DIRECT';'}';' >> /etc/apt/apt.conf.d/40proxy",
       user    => root,
@@ -14,13 +16,19 @@ class base2 {
   group { "puppet": ensure => "present"; }  ->
 
   class { "aptitude": require         => Exec['update apt'], } ->
-  package { "openjdk-6-jre": ensure   => "present", } ->
-  package { "curl": ensure            => "present", } ->
-  package { "git-core": ensure        => "installed", } -> 
-  package { "vim": ensure             => "installed", } ->
-  package { "wget": ensure            => "installed", } ->
-  package { "libssl0.9.8": ensure     => "installed", } ->
-  package { "build-essential": ensure => "installed", } ->
-  package { "libsqlite3-dev": ensure => "installed", }
+  package { $base_packages: ensure => installed }
+    file { '/tmp/setuptools-1.1.tar.gz':
+      ensure  => file,
+      owner   => root,
+      group   => root,
+      mode    => 600,
+      source  => 'puppet:///modules/base2/setuptools-1.1.tar.gz',
+  } 
+  exec { "/bin/bash -c 'source /etc/environment;cd /tmp;/bin/tar zxvf setuptools-1.1.tar.gz;cd setuptools-1.1 && sudo python setup.py install;sudo easy_install pip'":
+    timeout   => 0,
+    logoutput => true,
+    require   => Package[$base_packages],
+  }
+
 
 }

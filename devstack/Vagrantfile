@@ -10,11 +10,25 @@ Vagrant::Config.run do |config|
   config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   config.vm.customize ["modifyvm", :id, "--memory", 2048]
-  config.vm.forward_port 80, 8080,  :auto => true
+  # expose services
+  config.vm.forward_port 80, 8888
+  config.vm.forward_port 22,  2299 
+  config.vm.forward_port 3333, 3333
+  config.vm.forward_port 35357, 35357
+  config.vm.forward_port 5000, 5000
+  config.vm.forward_port 8000, 8000
+  config.vm.forward_port 8004, 8004
+  config.vm.forward_port 8080, 8080
+  config.vm.forward_port 8773, 8773
+  config.vm.forward_port 8774, 8774
+  config.vm.forward_port 8776, 8776
+  config.vm.forward_port 8777, 8777
+  config.vm.forward_port 9292, 9292
+  config.vm.forward_port 9696, 9696
   config.vm.network :hostonly, host_ip
   config.vm.boot_mode='gui'
 
-  config.vm.provision :shell, :path=> "bootstrap.sh" 
+  config.vm.provision :shell, :path => "bootstrap.sh" 
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
     puppet.module_path = "../modules"
