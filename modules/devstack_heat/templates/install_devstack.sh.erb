@@ -48,6 +48,7 @@ heat,\
 horizon,\
 key,\
 mysql,\
+neutron,\ 
 n-api,\
 n-cauth,\
 n-cond,\
@@ -97,7 +98,7 @@ echo PUBLIC_INTERFACE=eth0 >> localrc
 echo HOST_IP_IFACE=eth0 >> localrc
 <% end %>
 echo FLAT_INTERFACE=br100 >> localrc
-ecoh SCHEDULER=nova.scheduler.simple.SimpleScheduler >> localrc
+echo SCHEDULER=nova.scheduler.simple.SimpleScheduler >> localrc
 echo EXTRA_OPTS=\(scheduler_default_filters=AllHostsFilter\) >> localrc
 ./stack.sh
 echo "OFFLINE=True" >> localrc

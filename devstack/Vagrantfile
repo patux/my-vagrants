@@ -1,9 +1,16 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+def Kernel.is_windows?
+    # Detect if we are running on Windows
+    processor, platform, *rest = RUBY_PLATFORM.split("-")
+    platform == 'mingw32'
+end
+
 proxy_host = "proxy-us.intel.com"
 proxy_port = "911"
 host_ip    = "10.10.10.101"
+ssh_dir    = "~/.ssh/"
 
 Vagrant::Config.run do |config|
   config.vm.host_name = "devstack"
@@ -25,9 +32,14 @@ Vagrant::Config.run do |config|
   config.vm.forward_port 8777, 8777
   config.vm.forward_port 9292, 9292
   config.vm.forward_port 9696, 9696
+  config.vm.forward_port 27017, 27017
+  config.vm.forward_port 3306, 3306 
   config.vm.network :hostonly, host_ip
   config.vm.boot_mode='gui'
-
+  
+  if !Kernel.is_windows?
+      config.vm.share_folder("v-ssh", "/home/vagrant/.host-ssh", ssh_dir)
+  end
   config.vm.provision :shell, :path => "bootstrap.sh" 
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"

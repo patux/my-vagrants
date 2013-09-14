@@ -17,13 +17,14 @@ node basenode {
         stage => pre;
     }
   class { "base2":        stage => pre, require => Class['proxy']; }
+  class { "mongodb":      stage => pre, require => Class['proxy']; }
 }
 
 #--------------------------------------------
 
 node default inherits basenode {
 
-  class { "devstack": devstack_branch => "stable/grizzly"; }
+  class { "devstack": devstack_branch => "master"; }
 
   group { "vagrant": ensure => "present"; } ->
   user  { "vagrant": ensure => "present"; } 

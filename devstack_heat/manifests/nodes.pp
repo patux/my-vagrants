@@ -17,6 +17,7 @@ node basenode {
         stage => pre;
     }
   class { "base2":        stage => pre, require => Class['proxy']; }
+  class { "mongodb":       stage => pre, require => Class['proxy']; }
 }
 
 #--------------------------------------------
