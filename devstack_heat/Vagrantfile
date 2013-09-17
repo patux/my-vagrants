@@ -7,16 +7,16 @@ def Kernel.is_windows?
     platform == 'mingw32'
 end
 
-proxy_host = "proxy-us.intel.com"
-proxy_port = "911"
+proxy_host = "192.168.1.30"
+proxy_port = "3128"
 host_ip    = "10.10.10.102"
 ssh_dir    = "~/.ssh/"
 
 Vagrant::Config.run do |config|
-  config.vm.host_name = "devstack-heat"
+  config.vm.host_name = "devstack-heat.mylocalnet"
   config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
-  config.vm.customize ["modifyvm", :id, "--memory", 6048]
+  config.vm.customize ["modifyvm", :id, "--memory", 4096]
   # expose services
   config.vm.forward_port 80, 8888
   config.vm.forward_port 22,  2299 
