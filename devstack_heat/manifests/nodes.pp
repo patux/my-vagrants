@@ -7,13 +7,13 @@ Stage['main'] -> Stage['post']
 
 node basenode {
   class { 'proxy': 
-        http_proxy_host  =>  "192.168.1.30", 
+        http_proxy_host  =>  "192.168.2.30", 
         http_proxy_port  => "3128", 
-        https_proxy_host =>  "192.168.1.30", 
+        https_proxy_host =>  "192.168.2.30", 
         https_proxy_port => "3128", 
         socks_proxy_host =>  "", 
         socks_proxy_port => "", 
-        no_proxy_domains => ".localnet.com",
+        no_proxy_domains => ".mylocalnet.com",
         stage => pre;
     }
   class { "base2":        stage => pre, require => Class['proxy']; }
