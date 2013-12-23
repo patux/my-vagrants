@@ -1,11 +1,17 @@
 class base2 {
   $base_packages = [ "openjdk-6-jre", "curl", "git-core", "vim", "wget", "libssl0.9.8", "build-essential", "libsqlite3-dev", "libffi-dev", "git-review", "python-dev" ]
 
+  exec {"hold kernel":
+    command   => "/usr/bin/apt-mark linux-image-`uname -r`",
+    timeout   => 0,
+    logoutput => true,
+  }
   exec {"update apt":
     command   => "/bin/bash -c 'source /etc/environment;/usr/bin/apt-get -y update;/usr/bin/apt-get -y dist-upgrade'",
     #command  => "apt-get -y update",
     timeout   => 0,
     logoutput => true,
+    require => Exec["hold kernel"],
   }
 
   group { "puppet": ensure => "present"; }  ->
